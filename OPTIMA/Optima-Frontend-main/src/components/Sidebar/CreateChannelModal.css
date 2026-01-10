@@ -1,0 +1,326 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--text-primary);
+}
+
+.modal-content form {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.modal-content .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Member Selection Styles */
+.members-selection {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: normal;
+}
+
+.user-checkbox:hover {
+  background-color: #f0f0f0;
+  border-color: var(--primary-color);
+}
+
+.user-checkbox input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.user-checkbox span {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 15px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    max-height: 85vh;
+    border-radius: 8px;
+  }
+  
+  .modal-header {
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .close-btn {
+    align-self: flex-end;
+  }
+  
+  .modal-content form {
+    padding: 15px;
+  }
+  
+  .modal-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  
+  .modal-content input,
+  .modal-content textarea,
+  .modal-content select {
+    padding: 8px 10px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .modal-actions {
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .btn-secondary,
+  .btn-primary {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  /* Member selection mobile styles */
+  .members-selection {
+    max-height: 200px;
+    padding: 8px;
+  }
+  
+  .user-checkbox {
+    padding: 6px 8px;
+  }
+  
+  .user-checkbox span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    border-radius: 6px;
+  }
+  
+  .modal-header {
+    padding: 12px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .close-btn {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content form {
+    padding: 12px;
+  }
+  
+  .modal-content .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .modal-content label {
+    font-size: 0.8rem;
+  }
+  
+  .modal-content input,
+  .modal-content textarea,
+  .modal-content select {
+    padding: 8px 8px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+  
+  .btn-secondary,
+  .btn-primary {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  
+  /* Member selection small screen */
+  .members-selection {
+    max-height: 150px;
+    padding: 6px;
+  }
+  
+  .user-checkbox {
+    padding: 5px 6px;
+    gap: 6px;
+  }
+  
+  .user-checkbox span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal-header h2 {
+    font-size: 1rem;
+  }
+  
+  .modal-content input,
+  .modal-content textarea,
+  .modal-content select {
+    font-size: 14px;
+  }
+  
+  .btn-secondary,
+  .btn-primary {
+    font-size: 0.8rem;
+  }
+}

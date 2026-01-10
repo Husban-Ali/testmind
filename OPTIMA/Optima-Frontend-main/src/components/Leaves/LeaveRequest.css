@@ -1,0 +1,475 @@
+.leave-request-container {
+  padding: 30px;
+  padding-bottom: 60px;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+.leave-header {
+  margin-bottom: 30px;
+}
+
+.leave-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Statistics Card */
+.leave-stats-card {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leave-stats-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.stat-item {
+  background: #f8f9fa;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item.highlight {
+  background: linear-gradient(135deg, #b6965f 0%, #396068 100%);
+  color: white;
+  border: none;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.stat-item.highlight .stat-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.stat-item.highlight .stat-value {
+  color: white;
+}
+
+/* Form Card */
+.leave-form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leave-form-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #b6965f 0%, #396068 100%);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(182, 150, 95, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Requests Card */
+.leave-requests-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leave-requests-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.request-item {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.request-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.request-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.leave-count {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-approved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Payment Status Badges */
+.payment-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.payment-badge.paid {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.payment-badge.unpaid {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.payment-badge.pending {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.request-body {
+  margin-bottom: 10px;
+}
+
+.request-body p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.request-date {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.reviewer-info {
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.rejection-reason {
+  background: #fef2f2;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* Alerts */
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border-left: 4px solid #dc2626;
+}
+
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border-left: 4px solid #10b981;
+}
+
+.no-data {
+  text-align: center;
+  color: #94a3b8;
+  padding: 40px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leave-request-container {
+    padding: 15px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .leave-header h1 {
+    font-size: 24px;
+  }
+
+  .request-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* Date Selection Mode Toggle */
+.date-mode-toggle {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.mode-btn:hover {
+  border-color: #b6965f;
+  background: #f8f9fa;
+}
+
+.mode-btn.active {
+  border-color: #b6965f;
+  background: linear-gradient(135deg, #b6965f, #d4b883);
+  color: white;
+}
+
+/* Date Picker Styles */
+.date-picker-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.date-picker-input:focus {
+  outline: none;
+  border-color: #b6965f;
+}
+
+.selected-dates-container {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.selected-count {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  color: #b6965f;
+  font-size: 14px;
+}
+
+.dates-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.date-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #b6965f;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #333;
+}
+
+.date-chip span {
+  font-weight: 500;
+}
+
+.remove-date-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.remove-date-btn:hover {
+  background: #fee;
+  transform: scale(1.2);
+}
+
+.hint-text {
+  margin: 10px 0 0 0;
+  color: #999;
+  font-size: 13px;
+  font-style: italic;
+}

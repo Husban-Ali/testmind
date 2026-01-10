@@ -1,0 +1,113 @@
+PWA ICON GENERATION INSTRUCTIONS
+==================================
+
+You need to create icons for your PWA. Follow these steps:
+
+REQUIRED ICON SIZES:
+-------------------
+1. icon-72x72.png       (72x72 pixels)
+2. icon-96x96.png       (96x96 pixels)
+3. icon-128x128.png     (128x128 pixels)
+4. icon-144x144.png     (144x144 pixels) - Windows tiles
+5. icon-152x152.png     (152x152 pixels) - iOS
+6. icon-192x192.png     (192x192 pixels) - Android (maskable)
+7. icon-384x384.png     (384x384 pixels)
+8. icon-512x512.png     (512x512 pixels) - Android (maskable)
+
+iOS SPLASH SCREENS:
+-------------------
+9. splash-750x1334.png      (iPhone 8, 7, 6s, 6)
+10. splash-828x1792.png     (iPhone 11, XR)
+11. splash-1125x2436.png    (iPhone X, XS, 11 Pro)
+12. splash-1170x2532.png    (iPhone 12, 13, 14)
+13. splash-1284x2778.png    (iPhone 12 Pro Max, 13 Pro Max, 14 Plus)
+14. splash-1179x2556.png    (iPhone 14 Pro)
+15. splash-1290x2796.png    (iPhone 14 Pro Max)
+
+OPTIONAL SCREENSHOTS:
+--------------------
+16. screenshot-wide.png     (1280x720 pixels) - Desktop
+17. screenshot-mobile.png   (750x1334 pixels) - Mobile
+
+HOW TO GENERATE ICONS:
+----------------------
+
+OPTION 1: Use Online Tools (Easiest)
+-------------------------------------
+1. Create a high-quality logo (1024x1024 PNG recommended)
+2. Use free tools like:
+   - https://www.pwabuilder.com/imageGenerator
+   - https://realfavicongenerator.net/
+   - https://favicon.io/favicon-converter/
+   
+3. Upload your logo and download all sizes
+4. Place all generated files in this /icons/ folder
+
+OPTION 2: Use ImageMagick (Command Line)
+-----------------------------------------
+If you have ImageMagick installed:
+
+# From a 1024x1024 source logo.png:
+convert logo.png -resize 72x72 icon-72x72.png
+convert logo.png -resize 96x96 icon-96x96.png
+convert logo.png -resize 128x128 icon-128x128.png
+convert logo.png -resize 144x144 icon-144x144.png
+convert logo.png -resize 152x152 icon-152x152.png
+convert logo.png -resize 192x192 icon-192x192.png
+convert logo.png -resize 384x384 icon-384x384.png
+convert logo.png -resize 512x512 icon-512x512.png
+
+OPTION 3: Use Photoshop/GIMP/Figma
+-----------------------------------
+1. Open your logo
+2. Export/Save As PNG for each required size
+3. Save all files in this folder
+
+SPLASH SCREEN DESIGN TIPS:
+---------------------------
+- Background color: #ffffff (white)
+- Center your logo
+- Add brand color accent: #b6965f
+- Keep logo size reasonable (not full screen)
+- Leave safe zones for status bars
+
+MASKABLE ICONS (Android):
+--------------------------
+For icon-192x192.png and icon-512x512.png:
+- Add 10% padding around your logo
+- Ensure logo is centered
+- Use solid background color
+- This ensures Android doesn't crop important parts
+
+TESTING YOUR ICONS:
+-------------------
+1. Build your app: npm run build
+2. Serve locally: npx serve -s build
+3. Open Chrome DevTools > Application > Manifest
+4. Check all icons load correctly
+5. Test on real devices (Android + iOS)
+
+DESIGN GUIDELINES:
+------------------
+- Use your brand colors (#b6965f theme color)
+- Keep design simple and recognizable
+- Ensure contrast for visibility
+- Test on both light and dark backgrounds
+- Avoid text (unless it's a logo)
+
+CURRENT THEME:
+--------------
+Primary Color: #b6965f (Gold/Bronze)
+Background: #ffffff (White)
+App Name: Optima RS
+
+QUICK START (Placeholder Icons):
+---------------------------------
+If you need to start quickly:
+1. Use a solid color square with your brand color
+2. Add text "OR" or your initials
+3. Generate all sizes
+4. Replace with professional icons later
+
+Once you have all icons, remove this instruction file.
+Your PWA is ready to be installed once icons are in place!

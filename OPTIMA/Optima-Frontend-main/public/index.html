@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#b6965f" />
+    <meta name="description" content="Optima RS - Complete team collaboration platform with real-time chat, video calls, project management, and EOD reporting" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Optima RS" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/icon-72x72.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/icons/icon-512x512.png" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="%PUBLIC_URL%/icons/icon-192x192.png" />
+    
+    <!-- iOS Splash Screens -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-1290x2796.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-1179x2556.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-1284x2778.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-1170x2532.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-1125x2436.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-828x1792.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="%PUBLIC_URL%/icons/splash-750x1334.png" />
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#b6965f" />
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icons/icon-144x144.png" />
+    <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml" />
+    
+    <title>Optima RS - Team Collaboration</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- PWA Standalone Mode Detection -->
+    <script>
+      // Detect if running in standalone mode
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+        document.documentElement.classList.add('standalone-mode');
+        console.log('PWA: Running in standalone mode');
+      }
+      
+      // Handle beforeinstallprompt event for better PWA installation
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('PWA: beforeinstallprompt event fired');
+        // Store the event for later use
+        window.deferredPrompt = e;
+      });
+      
+      // Log when app is installed
+      window.addEventListener('appinstalled', () => {
+        console.log('PWA: App successfully installed');
+        window.deferredPrompt = null;
+      });
+    </script>
+  </body>
+</html>
+
