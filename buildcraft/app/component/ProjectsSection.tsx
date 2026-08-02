@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useRef } from "react";
+import { useGsapReveal } from "../hooks/useGsapReveal";
 
 const filters = ["All", "Commercial", "Residential", "Hospitality"];
 
@@ -20,25 +22,32 @@ const projects = [
 
 export default function ProjectsSection() {
   const [active, setActive] = useState("All");
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useGsapReveal(sectionRef, {
+    selector: "[data-gsap='project-item']",
+    stagger: 0.08,
+    scrollTrigger: true,
+  });
 
   const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <Box sx={{ bgcolor: "#fff", py: 10 }} id="projects">
+    <Box ref={sectionRef} sx={{ bgcolor: "#fff", py: 10 }} id="projects">
       <Container maxWidth="xl">
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 6 }}>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1.5, mb: 2 }}>
             <Box sx={{ width: 32, height: 2, bgcolor: "#f5a623" }} />
-            <Typography sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Inter', sans-serif" }}>
+            <Typography data-gsap="project-item" sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Inter', sans-serif" }}>
               Our Portfolio
             </Typography>
             <Box sx={{ width: 32, height: 2, bgcolor: "#f5a623" }} />
           </Box>
-          <Typography variant="h2" sx={{ fontWeight: 800, color: "#0a0a0a", fontSize: { xs: "2.5rem", md: "3.5rem" }, fontFamily: "'Inter', sans-serif", mb: 2 }}>
+          <Typography data-gsap="project-item" variant="h2" sx={{ fontWeight: 800, color: "#0a0a0a", fontSize: { xs: "2.5rem", md: "3.5rem" }, fontFamily: "'Inter', sans-serif", mb: 2 }}>
             Featured Projects
           </Typography>
-          <Typography sx={{ color: "rgb(107,114,128)", fontSize: "1.05rem", maxWidth: 580, mx: "auto", lineHeight: 1.75, fontFamily: "'Inter', sans-serif" }}>
+          <Typography data-gsap="project-item" sx={{ color: "rgb(107,114,128)", fontSize: "1.05rem", maxWidth: 580, mx: "auto", lineHeight: 1.75, fontFamily: "'Inter', sans-serif" }}>
             Explore our portfolio of completed projects showcasing our commitment to quality, innovation, and architectural excellence.
           </Typography>
         </Box>
@@ -73,6 +82,7 @@ export default function ProjectsSection() {
           {filtered.map((p, i) => (
             <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
               <Box
+                data-gsap="project-item"
                 sx={{
                   position: "relative",
                   borderRadius: 2,

@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -6,12 +7,24 @@ import Container from "@mui/material/Container";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 import StatsBar from "./StatsBar";
+import gsap from "gsap";
+import { useGsapReveal } from "../hooks/useGsapReveal";
 
 export default function HeroSection() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+
+  useGsapReveal(heroRef, {
+    selector: "[data-gsap='hero-item']",
+    stagger: 0.12,
+    from: { y: 24 },
+    to: { duration: 0.8 },
+  });
+
   return (
-    <Box>
+    <Box id="home">
       {/* Hero */}
       <Box
+        ref={heroRef}
         sx={{
           minHeight: "88vh",
           backgroundImage: "url('/hero-bg.png')",
@@ -45,9 +58,10 @@ export default function HeroSection() {
   }}
 >
           {/* Orange top line */}
-          <Box sx={{ width: 48, height: 4, bgcolor: "#f5a623", mb: 3 }} />
+          <Box data-gsap="hero-item" sx={{ width: 48, height: 4, bgcolor: "#f5a623", mb: 3 }} />
 
           <Typography
+            data-gsap="hero-item"
             sx={{
               color: "rgb(245, 166, 35)",
               fontWeight: 700,
@@ -63,6 +77,7 @@ export default function HeroSection() {
           </Typography>
 
           <Typography
+            data-gsap="hero-item"
             variant="h1"
             sx={{
               color: "white",
@@ -83,6 +98,7 @@ export default function HeroSection() {
           </Typography>
 
           <Typography
+  data-gsap="hero-item"
   sx={{
     color: "rgba(255, 255, 255, 0.65)",
     fontSize: "1.5rem",
@@ -100,7 +116,7 @@ export default function HeroSection() {
   quality.
 </Typography>
 
-          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <Box data-gsap="hero-item" sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
             <Button
               variant="contained"
               endIcon={<ArrowForwardIcon />}

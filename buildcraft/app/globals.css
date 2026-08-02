@@ -17,6 +17,8 @@ html {
   text-size-adjust: 100%;
   scrollbar-width: thin;
   scrollbar-color: rgb(245, 166, 35) rgb(10, 10, 10);
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 *, ::before, ::after {

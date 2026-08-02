@@ -9,6 +9,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useRef } from "react";
+import { useGsapReveal } from "../hooks/useGsapReveal";
 
 const contactInfo = [
   { icon: <PhoneIcon sx={{ color: "#f5a623" }} />, label: "Phone", value: "+1 (555) 234-5678" },
@@ -26,16 +28,24 @@ const inputSx = {
 };
 
 export default function ContactSection() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useGsapReveal(sectionRef, {
+    selector: "[data-gsap='contact-item']",
+    stagger: 0.08,
+    scrollTrigger: true,
+  });
+
   return (
-    <Box sx={{ bgcolor: "#fff", py: 10 }} id="contact">
+    <Box ref={sectionRef} sx={{ bgcolor: "#fff", py: 10 }} id="contact">
       <Container maxWidth="xl">
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 7 }}>
-          <Box sx={{ width: 48, height: 3, bgcolor: "#f5a623", mx: "auto", mb: 2 }} />
-          <Typography sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", mb: 1 }}>
+          <Box data-gsap="contact-item" sx={{ width: 48, height: 3, bgcolor: "#f5a623", mx: "auto", mb: 2 }} />
+          <Typography data-gsap="contact-item" sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", mb: 1 }}>
             Get In Touch
           </Typography>
-          <Typography variant="h3" sx={{ fontWeight: 900, color: "#1a1a1a" }}>
+          <Typography data-gsap="contact-item" variant="h3" sx={{ fontWeight: 900, color: "#1a1a1a" }}>
             Contact Us
           </Typography>
         </Box>
@@ -43,7 +53,7 @@ export default function ContactSection() {
         <Grid container spacing={6}>
           {/* Contact Info */}
           <Grid size={{ xs: 12, md: 4 }}>
-            <Box sx={{ bgcolor: "#1a1a1a", p: 4, height: "100%" }}>
+            <Box data-gsap="contact-item" sx={{ bgcolor: "#1a1a1a", p: 4, height: "100%" }}>
               <Typography variant="h5" sx={{ color: "white", fontWeight: 700, mb: 3 }}>
                 Let&apos;s Start Your Project
               </Typography>
@@ -66,22 +76,23 @@ export default function ContactSection() {
           <Grid size={{ xs: 12, md: 8 }}>
             <Grid container spacing={3}>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth label="Your Name" variant="outlined" sx={inputSx} />
+                <TextField data-gsap="contact-item" fullWidth label="Your Name" variant="outlined" sx={inputSx} />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth label="Email Address" variant="outlined" sx={inputSx} />
+                <TextField data-gsap="contact-item" fullWidth label="Email Address" variant="outlined" sx={inputSx} />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth label="Phone Number" variant="outlined" sx={inputSx} />
+                <TextField data-gsap="contact-item" fullWidth label="Phone Number" variant="outlined" sx={inputSx} />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth label="Project Type" variant="outlined" sx={inputSx} />
+                <TextField data-gsap="contact-item" fullWidth label="Project Type" variant="outlined" sx={inputSx} />
               </Grid>
               <Grid size={{ xs: 12 }}>
-                <TextField fullWidth label="Project Details" variant="outlined" multiline rows={5} sx={inputSx} />
+                <TextField data-gsap="contact-item" fullWidth label="Project Details" variant="outlined" multiline rows={5} sx={inputSx} />
               </Grid>
               <Grid size={{ xs: 12 }}>
                 <Button
+                  data-gsap="contact-item"
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
                   sx={{ bgcolor: "#f5a623", color: "#1a1a1a", fontWeight: 700, textTransform: "none", px: 4, py: 1.5, fontSize: "1rem", borderRadius: 1, "&:hover": { bgcolor: "#e09400" } }}

@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -11,12 +12,18 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import PhoneIcon from "@mui/icons-material/Phone";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const pages = ["Home", "About", "Services", "Projects", "Testimonials", "Contact"];
 
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = React.useState(false);
+  const [activePage, setActivePage] = React.useState("Home");
+  const appBarRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -26,8 +33,38 @@ export default function ResponsiveAppBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    if (!appBarRef.current) {
+      return;
+    }
+
+    gsap.fromTo(appBarRef.current, { y: -18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" });
+  }, []);
+
+  const scrollToSection = (page: string) => {
+    setActivePage(page);
+    setAnchorElNav(null);
+
+    if (page === "Home") {
+      gsap.to(window, { duration: 0.8, scrollTo: { y: 0 }, ease: "power3.inOut" });
+      return;
+    }
+
+    const element = document.getElementById(page.toLowerCase());
+
+    if (!element) {
+      return;
+    }
+
+    gsap.to(window, {
+      duration: 0.9,
+      ease: "power3.inOut",
+      scrollTo: { y: element, offsetY: 88 },
+    });
+  };
+
   return (
-    <AppBar position="fixed"
+    <AppBar ref={appBarRef} position="fixed"
       sx={{
        background: scrolled ? "rgba(10, 10, 10, 0.98)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
@@ -35,7 +72,7 @@ export default function ResponsiveAppBar() {
         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         borderBottom: scrolled ? "1px solid rgba(245, 166, 35, 0.1)" : "1px solid transparent",
         zIndex: 1100,
-        top: 12,
+        top: scrolled ? 0 : 12,
         left: 0,
         right: 0,
         color: "rgb(10, 10, 10)",
@@ -79,14 +116,14 @@ export default function ResponsiveAppBar() {
   {pages.map((page) => (
     <Button
       key={page}
-      onClick={() => setActivePage(page)}
+      onClick={() => scrollToSection(page)}
       sx={{
         fontFamily: "'Inter', sans-serif",
-        color: page === "Home" ? "white" : "#bbb",
-        fontWeight: page === "Home" ? 600 : 400,
+        color: page === activePage ? "white" : "#bbb",
+        fontWeight: page === activePage ? 600 : 400,
         fontSize: "1.1rem",     // 0.95rem se barha diya
         textTransform: "none",
-        borderBottom: page === "Home" ? "2px solid #f5a623" : "2px solid transparent",
+        borderBottom: page === activePage ? "2px solid #f5a623" : "2px solid transparent",
         borderRadius: 0,
         px: 1.5,                // 1 se barhaya
         mx: 1,                  // 0.3 se barhaya — yeh gap control karta hai
@@ -139,8 +176,18 @@ export default function ResponsiveAppBar() {
             </IconButton>
             <Menu anchorEl={anchorElNav} open={Boolean(anchorElNav)} onClose={() => setAnchorElNav(null)}>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => setAnchorElNav(null)}>
-                  <Typography>{page}</Typography>
+                <MenuItem
+                  key={page}
+                  onClick={() => scrollToSection(page)}
+                >
+                  <Typography
+                    sx={{
+                      color: page === activePage ? "#f5a623" : "inherit",
+                      fontWeight: page === activePage ? 600 : 400,
+                    }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -148,5 +195,5 @@ export default function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  );   
 }

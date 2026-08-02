@@ -10,27 +10,37 @@ import HandymanIcon from "@mui/icons-material/Handyman";
 import BedIcon from "@mui/icons-material/Bed";
 import BusinessIcon from "@mui/icons-material/Business";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import { useRef } from "react";
+import { useGsapReveal } from "../hooks/useGsapReveal";
 
 const services = [
-  { icon: <HomeIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Residential Construction", desc: "Crafting dream homes with precision engineering and premium materials. From single-family homes to luxury estates.", img: "/hero-bg.png" },
-  { icon: <ApartmentIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Commercial Construction", desc: "Building modern commercial spaces that drive business growth. Office buildings, retail centers, and mixed-use developments.", img: "/hero-bg.png" },
-  { icon: <HandymanIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Renovation & Remodeling", desc: "Transforming existing spaces with innovative design and expert craftsmanship. Complete interior and exterior renovations.", img: "/hero-bg.png" },
+  { icon: <HomeIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Residential Construction", desc: "Crafting dream homes with precision engineering and premium materials. From single-family homes to luxury estates.", img: "/residential.jfif" },
+  { icon: <ApartmentIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Commercial Construction", desc: "Building modern commercial spaces that drive business growth. Office buildings, retail centers, and mixed-use developments.", img: "/commercial.jfif" },
+  { icon: <HandymanIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Renovation & Remodeling", desc: "Transforming existing spaces with innovative design and expert craftsmanship. Complete interior and exterior renovations.", img: "/renovation.jfif" },
   { icon: <BedIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Interior Design", desc: "Creating beautiful, functional interiors that reflect your style and meet your needs with premium finishes.", img: "/hero-bg.png" },
   { icon: <BusinessIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Industrial Projects", desc: "Heavy-duty industrial facilities designed for efficiency, safety, and long-term performance at scale.", img: "/hero-bg.png" },
   { icon: <DesignServicesIcon sx={{ fontSize: "1.8rem", color: "#f5a623" }} />, title: "Architecture & Design", desc: "Innovative architectural designs that blend aesthetics with functionality and sustainability for every project.", img: "/hero-bg.png" },
 ];
 
 export default function ServicesSection() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useGsapReveal(sectionRef, {
+    selector: "[data-gsap='service-item']",
+    stagger: 0.08,
+    scrollTrigger: true,
+  });
+
   return (
-    <Box sx={{ bgcolor: "#f5f5f0", py: 10 }} id="services">
+    <Box ref={sectionRef} sx={{ bgcolor: "#f5f5f0", py: 10 }} id="services">
       <Container maxWidth="xl">
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 7 }}>
-          <Box sx={{ width: 48, height: 3, bgcolor: "#f5a623", mx: "auto", mb: 2 }} />
-          <Typography sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", mb: 1 }}>
+          <Box data-gsap="service-item" sx={{ width: 48, height: 3, bgcolor: "#f5a623", mx: "auto", mb: 2 }} />
+          <Typography data-gsap="service-item" sx={{ color: "#f5a623", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", mb: 1 }}>
             What We Offer
           </Typography>
-          <Typography variant="h3" sx={{ fontWeight: 900, color: "#1a1a1a" }}>
+          <Typography data-gsap="service-item" variant="h3" sx={{ fontWeight: 900, color: "#1a1a1a" }}>
             Our Services
           </Typography>
         </Box>
@@ -39,6 +49,7 @@ export default function ServicesSection() {
           {services.map((s, i) => (
             <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
               <Box
+                data-gsap="service-item"
                 sx={{
                   bgcolor: "white",
                   borderRadius: 2,
