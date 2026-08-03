@@ -63,7 +63,7 @@ export default function StatsBar() {
 
   return (
     <Box ref={containerRef} sx={{ bgcolor: "#000000", py: 6 }}>
-      <Container maxWidth="xl" disableGutters>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 4, md: 6 } }}>
         <Grid container spacing={2}>
           {stats.map((s) => (
             <Grid key={s.label} size={{ xs: 6, md: 3 }} sx={{ textAlign: "center" }}>

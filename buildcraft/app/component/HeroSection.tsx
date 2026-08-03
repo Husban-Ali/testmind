@@ -1,13 +1,11 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
-import StatsBar from "./StatsBar";
-import gsap from "gsap";
+
 import { useGsapReveal } from "../hooks/useGsapReveal";
 
 export default function HeroSection() {
@@ -22,11 +20,10 @@ export default function HeroSection() {
 
   return (
     <Box id="home">
-      {/* Hero */}
       <Box
         ref={heroRef}
         sx={{
-          minHeight: "88vh",
+          minHeight: "100vh",
           backgroundImage: "url('/hero-bg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
@@ -34,11 +31,12 @@ export default function HeroSection() {
           position: "relative",
           display: "flex",
           alignItems: "center",
+          overflow: "hidden",
           pt: 8,
           pb: { xs: 6, md: 2 },
         }}
       >
-        {/* Dark overlay - exact gradient from CSS */}
+        {/* Overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -48,27 +46,26 @@ export default function HeroSection() {
           }}
         />
 
-       <Container
-  maxWidth="xl"
-  disableGutters
-  sx={{
-    position: "relative",
-    zIndex: 2,
-   px: { xs: 1.5, md: 1 },
-  }}
->
-          {/* Orange top line */}
-          <Box data-gsap="hero-item" sx={{ width: 48, height: 4, bgcolor: "#f5a623", mb: 3 }} />
+        {/* Content */}
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 2,
+            width: "100%",
+            px: { xs: 3, sm: 5, md: 8 },
+            boxSizing: "border-box",
+          }}
+        >
+          <Box data-gsap="hero-item" sx={{ width: 48, height: 4, bgcolor: "#f5a623", mb: 3, mt: 6 }} />
 
           <Typography
             data-gsap="hero-item"
             sx={{
-              color: "rgb(245, 166, 35)",
+              color: "#f5a623",
               fontWeight: 700,
-              fontSize: "1.2rem",
+              fontSize: { xs: "0.75rem", md: "0.85rem" },
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              
               fontFamily: "Inter, sans-serif",
               mb: 2,
             }}
@@ -82,7 +79,7 @@ export default function HeroSection() {
             sx={{
               color: "white",
               fontWeight: 800,
-              fontSize: { xs: "3.2rem", md: "5.5rem", lg: "5.5rem" },
+              fontSize: { xs: "2rem", sm: "2.8rem", md: "4rem", lg: "4.8rem" },
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               fontFamily: "'Playfair Display', Georgia, serif",
@@ -98,42 +95,37 @@ export default function HeroSection() {
           </Typography>
 
           <Typography
-  data-gsap="hero-item"
-  sx={{
-    color: "rgba(255, 255, 255, 0.65)",
-    fontSize: "1.5rem",
-    fontWeight: 500,
-    fontFamily: "'Inter', sans-serif",
-    lineHeight: 1.7,
-    letterSpacing: "0.01em",
-    wordSpacing: "0.05em", // ya isay hata do
-    maxWidth: 700,         // 500 se barhao
-    mb: 5,
-  }}
->
-  From concept to completion, we deliver exceptional construction services
-  backed by 25+ years of excellence, innovation, and unwavering commitment to
-  quality.
-</Typography>
+            data-gsap="hero-item"
+            sx={{
+              color: "rgba(255,255,255,0.65)",
+              fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.3rem" },
+              fontWeight: 400,
+              fontFamily: "Inter, sans-serif",
+              lineHeight: 1.7,
+              maxWidth: 600,
+              mb: 5,
+            }}
+          >
+            From concept to completion, we deliver exceptional construction services
+            backed by 25+ years of excellence, innovation, and unwavering commitment to quality.
+          </Typography>
 
           <Box data-gsap="hero-item" sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
             <Button
               variant="contained"
               endIcon={<ArrowForwardIcon />}
               sx={{
-                background: "rgb(245, 166, 35)",
-                color: "rgb(10, 10, 10)",
-                fontWeight: 600,
+                background: "#f5a623",
+                color: "#0a0a0a",
+                fontWeight: 700,
                 textTransform: "none",
-                px: 4,
-                py: "14.4px",
-                fontSize: "1.3rem",
+                px: { xs: 2.5, md: 4 },
+                py: { xs: "10px", md: "13px" },
+                fontSize: { xs: "0.95rem", md: "1.05rem" },
                 borderRadius: "4px",
-                letterSpacing: "0.04em",
                 fontFamily: "Inter, sans-serif",
-                boxShadow: "rgba(245, 166, 35, 0.35) 0px 4px 14px",
-                transition: "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                "&:hover": { background: "rgb(220, 149, 30)", boxShadow: "rgba(245, 166, 35, 0.5) 0px 6px 20px" },
+                boxShadow: "rgba(245,166,35,0.35) 0px 4px 14px",
+                "&:hover": { background: "rgb(220,149,30)" },
               }}
             >
               Start Your Project
@@ -142,27 +134,24 @@ export default function HeroSection() {
               variant="outlined"
               startIcon={<PlayCircleFilledWhiteIcon />}
               sx={{
-                border: "2px solid rgba(255, 255, 255, 0.3)",
-                color: "rgb(255, 255, 255)",
+                border: "2px solid rgba(255,255,255,0.3)",
+                color: "white",
                 fontWeight: 600,
                 textTransform: "none",
-                px: 4,
-                py: "14.4px",
-                fontSize: "1.3rem",
+                px: { xs: 2.5, md: 4 },
+                py: { xs: "10px", md: "13px" },
+                fontSize: { xs: "0.95rem", md: "1.05rem" },
                 borderRadius: "4px",
-                letterSpacing: "0.04em",
                 fontFamily: "Inter, sans-serif",
-                transition: "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 "&:hover": { border: "2px solid #f5a623", color: "#f5a623" },
               }}
             >
               View Our Work
             </Button>
           </Box>
-        </Container>
+        </Box>
       </Box>
 
-      <StatsBar />
     </Box>
   );
 }
