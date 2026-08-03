@@ -26,7 +26,7 @@ const projects: Project[] = [
   { title: "Luxury Villa Estate", category: "Residential", image: "/residential.jfif", location: "Beverly Hills, CA", area: "12,500 sq ft", year: "2024" },
   { title: "Glass Office Complex", category: "Commercial", image: "/architecture.jfif", location: "Los Angeles, CA", area: "280,000 sq ft", year: "2023" },
   { title: "Palm Beach Resort", category: "Hospitality", image: "/interior.jfif", location: "Miami, FL", area: "95,000 sq ft", year: "2023" },
-  { title: "Modern Penthouse", category: "Residential", image: "/renovation.jfif", location: "Chicago, IL", area: "8,200 sq ft", year: "2024" },
+  { title: "Modern Penthouse", category: "Residential", image: "/residential.jfif", location: "Chicago, IL", area: "8,200 sq ft", year: "2024" },
   { title: "City Shopping Mall", category: "Commercial", image: "/project-management.jfif", location: "Houston, TX", area: "620,000 sq ft", year: "2022" },
 ];
 

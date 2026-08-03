@@ -23,37 +23,37 @@ const services: Service[] = [
   {
     title: "Residential Construction",
     description: "Crafting dream homes with precision engineering and premium materials. From single-family homes to luxury estates and beyond.",
-    image: "/residential.jfif",
+    image: "/s1.png",
     icon: Home,
   },
   {
     title: "Commercial Construction",
     description: "Building modern commercial spaces that drive business growth. Office buildings, retail centers, and mixed-use developments at scale.",
-    image: "/commercial.jfif",
+    image: "/s2.png",
     icon: Building2,
   },
   {
     title: "Renovation & Remodeling",
     description: "Transforming existing spaces with innovative design and expert craftsmanship. Complete interior and exterior renovations done right.",
-    image: "/renovation.jfif",
+    image: "/s3.png",
     icon: Hammer,
   },
   {
     title: "Interior Design",
     description: "Creating stunning interiors that blend aesthetics with functionality. Customized design solutions tailored for every unique space.",
-    image: "/interior.jfif",
+    image: "/s4.png",
     icon: Sofa,
   },
   {
     title: "Architecture & Planning",
     description: "Innovative architectural designs that push boundaries while respecting environmental and structural principles at every level.",
-    image: "/architecture.jfif",
+    image: "/s5.png",
     icon: Compass,
   },
   {
     title: "Project Management",
     description: "End-to-end project oversight ensuring timely delivery, budget adherence, and quality standards maintained at every phase.",
-    image: "/project-management.jfif",
+    image: "/s6.png",
     icon: ClipboardCheck,
   },
 ];
